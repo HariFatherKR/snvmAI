@@ -15,10 +15,11 @@ const models = [
 const grid = document.querySelector('#model-grid');
 const search = document.querySelector('#model-search');
 let category = 'all';
+// shortcut: 확정 할인율 수령 전에는 모든 모델에 20%를 임시 표시합니다.
 function renderModels() {
   const query = search.value.trim().toLocaleLowerCase();
   const filtered = models.filter(model => (category === 'all' || model.categories.includes(category)) && `${model.name} ${model.provider} ${model.label}`.toLocaleLowerCase().includes(query));
-  grid.innerHTML = filtered.map(model => `<button class="model-card" data-model="${model.id}" aria-label="${model.name} 모델 자세히 보기"><div class="model-card-top"><span class="model-logo logo-${model.id}" aria-hidden="true">${model.logo}</span><span class="discount-badge">−20%</span></div><h3>${model.name}</h3><p>${model.provider}</p><div class="model-card-bottom"><span class="category-tag">${model.label}</span><span class="model-card-arrow" aria-hidden="true">↗</span></div></button>`).join('');
+  grid.innerHTML = filtered.map(model => `<button class="model-card" data-model="${model.id}" aria-label="${model.name}, 20% 할인, 모델 자세히 보기"><div class="model-card-top"><span class="model-logo logo-${model.id}" aria-hidden="true">${model.logo}</span><span class="discount-badge">20% 할인</span></div><h3>${model.name}</h3><p>${model.provider}</p><div class="model-card-bottom"><span class="category-tag">${model.label}</span><span class="model-card-arrow" aria-hidden="true">↗</span></div></button>`).join('');
   grid.hidden = filtered.length === 0;
   document.querySelector('#model-empty').hidden = filtered.length > 0;
   document.querySelector('#model-count').textContent = `${filtered.length}개의 모델이 표시됩니다.`;
@@ -187,7 +188,7 @@ function creditDialog() {
 }
 
 function consoleDialog() {
-  showDialog('SNVM AI / CONSOLE PREVIEW', `<span class="preview-label">체험 콘솔 · API 호출 미지원</span><h2 class="dialog-title" id="dialog-title">반가워요, 빌더.</h2><p class="dialog-subtitle">크레딧 한 곳에서, 모든 가능성을 관리하세요.</p><div class="console-balance"><span>내 체험 크레딧</span><strong>₩ ${won.format(demoBalance)}</strong><p>새로고침 시 초기화 · 실제 자산이 아닌 예시 잔액</p></div><div class="console-row"><span>체험 API 사용량</span><strong>0회</strong></div><div class="console-row"><span>지원 예정 라인업</span><strong>8개 브랜드</strong></div><div class="console-row"><span>적용 예정 할인율</span><strong>20%</strong></div><button class="button button-yellow dialog-full-button" data-open="credit">크레딧 충전 체험하기 <span aria-hidden="true">+</span></button><p class="dialog-note">로그인, 실제 API 키 발급, 사용량 집계는 서비스 출시 시 제공됩니다.</p>`);
+  showDialog('SNVM AI / CONSOLE PREVIEW', `<span class="preview-label">체험 콘솔 · API 호출 미지원</span><h2 class="dialog-title" id="dialog-title">반가워요, 빌더.</h2><p class="dialog-subtitle">크레딧 한 곳에서, 모든 가능성을 관리하세요.</p><div class="console-balance"><span>내 체험 크레딧</span><strong>₩ ${won.format(demoBalance)}</strong><p>새로고침 시 초기화 · 실제 자산이 아닌 예시 잔액</p></div><div class="console-row"><span>체험 API 사용량</span><strong>0회</strong></div><div class="console-row"><span>지원 예정 라인업</span><strong>8개 브랜드</strong></div><div class="console-row"><span>최대 할인율</span><strong>20%</strong></div><button class="button button-yellow dialog-full-button" data-open="credit">크레딧 충전 체험하기 <span aria-hidden="true">+</span></button><p class="dialog-note">로그인, 실제 API 키 발급, 사용량 집계는 서비스 출시 시 제공됩니다.</p>`);
 }
 
 function contactDialog() {
@@ -226,11 +227,11 @@ function guideDialog() {
 function modelDialog(id) {
   const model = models.find(item => item.id === id);
   if (!model) return;
-  showDialog('MEET YOUR NEXT MODEL', `<span class="preview-label">지원 예정 라인업</span><div class="model-dialog-logo model-logo logo-${model.id}" aria-hidden="true">${model.logo}</div><h2 class="dialog-title" id="dialog-title">${model.name}</h2><p class="dialog-subtitle">${model.description}</p><div class="model-dialog-facts"><div>제공사<strong>${model.provider}</strong></div><div>활용 분야<strong>${model.label}</strong></div></div><p class="dialog-subtitle">동일 모델의 공개 API 가격 대비 20% 할인 요금을 준비하고 있습니다. 제공 버전, 요청 형식과 실제 단가는 출시 시 안내됩니다.</p><button class="button button-yellow dialog-full-button" data-open="credit">크레딧 이용 방식 보기 <span aria-hidden="true">↗</span></button>`);
+  showDialog('MEET YOUR NEXT MODEL', `<span class="preview-label">지원 예정 라인업</span> <span class="discount-badge">20% 할인</span><div class="model-dialog-logo model-logo logo-${model.id}" aria-hidden="true">${model.logo}</div><h2 class="dialog-title" id="dialog-title">${model.name}</h2><p class="dialog-subtitle">${model.description}</p><div class="model-dialog-facts"><div>제공사<strong>${model.provider}</strong></div><div>활용 분야<strong>${model.label}</strong></div></div><p class="dialog-subtitle">현재 이 모델의 할인율은 20%로 임시 표시됩니다. 동일 모델의 공개 API 가격을 비교 기준으로 하며, 확정 할인율·지원 버전·단가는 출시 시 안내됩니다.</p><button class="button button-yellow dialog-full-button" data-open="credit">크레딧 이용 방식 보기 <span aria-hidden="true">↗</span></button>`);
 }
 
 function policyDialog() {
-  showDialog('BEFORE WE BEGIN', `<h2 class="dialog-title" id="dialog-title">이용 안내</h2><p class="dialog-subtitle">SNVM AI는 한국 기업과 개발자를 위한<br>AI API 크레딧 서비스 콘셉트입니다.</p><ul class="policy-list"><li>이 사이트는 서비스 소개와 체험을 위한 미리보기입니다. 실제 결제, 회원가입, API 호출은 제공하지 않습니다.</li><li>20% 할인은 동일 모델·동일 사용량의 공급사 공개 API 가격을 비교 기준으로 한 서비스 제안입니다. 실제 공급 조건, 지원 버전 및 가격표는 출시 전에 확정해야 합니다.</li><li>모든 브랜드명은 각 권리자에게 속합니다. 로고와 모델 이름의 표시는 공식 파트너십이나 인증을 의미하지 않습니다.</li><li>문의 정보는 서버로 전송되지 않습니다. 체험 크레딧은 현재 탭의 메모리에서만 유지되며 새로고침 시 초기화됩니다.</li><li>판매 주체, 개인정보 처리방침, 환불 및 크레딧 유효기간 정책은 서비스 출시 시 안내됩니다.</li></ul>`);
+  showDialog('BEFORE WE BEGIN', `<h2 class="dialog-title" id="dialog-title">이용 안내</h2><p class="dialog-subtitle">SNVM AI는 한국 기업과 개발자를 위한<br>AI API 크레딧 서비스 콘셉트입니다.</p><ul class="policy-list"><li>이 사이트는 서비스 소개와 체험을 위한 미리보기입니다. 실제 결제, 회원가입, API 호출은 제공하지 않습니다.</li><li>최대 20% 할인은 동일 모델·동일 사용량의 공급사 공개 API 가격을 비교 기준으로 한 서비스 제안입니다. 할인율은 모델별로 달라질 수 있으며, 현재 모든 모델의 20% 표시는 임시 안내입니다. 실제 할인율과 가격표는 출시 전에 확정해야 합니다.</li><li>모든 브랜드명은 각 권리자에게 속합니다. 로고와 모델 이름의 표시는 공식 파트너십이나 인증을 의미하지 않습니다.</li><li>문의 정보는 서버로 전송되지 않습니다. 체험 크레딧은 현재 탭의 메모리에서만 유지되며 새로고침 시 초기화됩니다.</li><li>판매 주체, 개인정보 처리방침, 환불 및 크레딧 유효기간 정책은 서비스 출시 시 안내됩니다.</li></ul>`);
 }
 
 const dialogs = { credit: creditDialog, console: consoleDialog, contact: contactDialog, guide: guideDialog, policy: policyDialog };
