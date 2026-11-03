@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4ff57">
+  <meta name="description" content="당신이 쓰는 AI, 무조건 20% 더 싸게. Claude부터 Kling까지, 필요한 만큼 충전하고 하나의 API로 사용하세요. 한국 기업과 개발자를 위한 TWENTY.">
+  <meta property="og:title" content="TWENTY — 같은 AI, 다른 가격.">
+  <meta property="og:description" content="당신이 쓰는 AI, 무조건 20% 더 싸게 제공해드립니다.">
+  <meta property="og:type" content="website">
+  <title>TWENTY — 당신이 쓰는 AI, 20% 더 싸게.</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="./fonts/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.mjs"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 바로가기</a>
+  <div class="announcement"><span>같은 AI. 같은 성능. 다른 가격.</span><a href="#savings">AI 비용, 오늘부터 −20% <span aria-hidden="true">↗</span></a></div>
+  <header class="header">
+    <a href="#" class="wordmark" aria-label="TWENTY 홈"><span class="brand-symbol" aria-hidden="true">t<span>↘</span></span>twenty<span class="brand-dot">AI</span></a>
+    <nav class="desktop-nav" aria-label="주요 메뉴"><a href="#models">모델 둘러보기</a><a href="#savings">요금 안내</a><a href="#business">기업 도입</a><a href="#developers">API 가이드 <span aria-hidden="true">↗</span></a></nav>
+    <div class="header-actions"><button class="text-button console-link" data-open="console">콘솔 체험</button><button class="button button-dark button-small" data-open="credit">시작하기 <span aria-hidden="true">↗</span></button><button class="menu-toggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span></button></div>
+    <nav id="mobile-nav" class="mobile-nav" aria-label="모바일 메뉴" hidden><a href="#models">모델 둘러보기</a><a href="#savings">요금 안내</a><a href="#business">기업 도입</a><a href="#developers">API 가이드</a><button data-open="console">콘솔 체험</button></nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="live-dot"></span> AI는 똑같이. 비용은 가볍게.</div>
+        <h1 id="hero-title"><span class="headline-line">당신이 쓰는 AI,</span><span class="headline-line">무조건 <span class="highlight">20%</span></span><span class="headline-line">더 싸게<span class="period">.</span></span><span class="sr-only"> 제공해드립니다.</span></h1>
+        <p class="hero-description">Claude부터 Kling까지, 필요한 AI를 한곳에서.<br>크레딧 한 번 충전하고, 모든 모델을 할인받으세요.</p>
+        <div class="hero-actions"><button class="button button-yellow" data-open="credit">20% 저렴하게 시작하기 <span aria-hidden="true">↗</span></button><a class="hero-secondary" href="#savings">얼마나 절약될까요? <span aria-hidden="true">↓</span></a></div>
+        <div class="hero-notes"><span><i aria-hidden="true">✓</i> 월 구독료 없이</span><span><i aria-hidden="true">✓</i> 필요한 만큼 충전</span><span><i aria-hidden="true">✓</i> 쓴 만큼만 차감</span></div>
+      </div>
+      <div class="hero-art" role="group" aria-label="같은 AI API를 20% 할인된 가격으로">
+        <span class="art-caption mono">SAME INTELLIGENCE.<br>LESS EXPENSE.</span>
+        <div class="orbit-tag tag-claude"><span class="claude-glyph" aria-hidden="true">✳</span> Claude <span class="mini-arrow" aria-hidden="true">↗</span></div>
+        <div class="orbit-tag tag-gemini"><span class="gemini-glyph" aria-hidden="true">✦</span> Gemini <span class="mini-arrow" aria-hidden="true">↗</span></div>
+        <div class="discount-ticket">
+          <div class="ticket-top"><span class="mono">THE SMARTER AI DEAL</span><span aria-hidden="true">↘</span></div>
+          <div class="ticket-number" aria-hidden="true"><span class="minus">−</span><span class="twenty-number">20</span><span class="percent">%</span></div>
+          <div class="ticket-bottom"><span>성능은 그대로.<br><strong>가격만 내려갑니다.</strong></span><span class="ticket-stamp">ALWAYS<br><b>LESS.</b></span></div>
+        </div>
+        <div class="orbit-tag tag-gpt"><svg class="model-mini" aria-hidden="true"><use href="#icon-openai"/></svg> ChatGPT <span class="mini-arrow" aria-hidden="true">↗</span></div>
+        <div class="orbit-tag tag-kling"><span class="kling-glyph" aria-hidden="true">K</span> Kling <span class="mini-arrow" aria-hidden="true">↗</span></div>
+        <div class="art-bottom"><span class="scribble-arrow" aria-hidden="true">⤴</span><span>아끼는 만큼, 더 큰 가능성.</span></div>
+        <button class="motion-toggle" aria-pressed="false" aria-label="애니메이션 일시정지"><span aria-hidden="true">Ⅱ</span> 모션 정지</button>
+      </div>
+      <div class="hero-bottom"><span class="mono">BUILT FOR BUILDERS. PRICED FOR EVERYONE.</span><a href="#models">모든 가능성을 만나보세요 <span aria-hidden="true">↓</span></a></div>
+    </section>
+
+    <div class="ticker" role="img" aria-label="더 적은 비용으로 더 많은 가능성"><div class="ticker-track" aria-hidden="true"><span>LESS COST.</span><i>✳</i><span>MORE POSSIBILITIES.</span><i>✳</i><span>SAME AI, −20%.</span><i>✳</i><span>LESS COST.</span><i>✳</i><span>MORE POSSIBILITIES.</span><i>✳</i><span>SAME AI, −20%.</span><i>✳</i></div></div>
+
+    <section id="models" class="section models-section" aria-labelledby="models-title">
+      <div class="section-topline"><span class="section-index mono">01 / THE LINEUP</span><span class="tiny-label">하나의 크레딧, 더 넓은 선택</span></div>
+      <div class="section-heading"><h2 id="models-title">좋아하는 AI는 그대로.<br>가격만 바꾸세요<span class="period">.</span></h2><p>텍스트, 코드, 이미지, 영상까지.<br>모델마다 결제할 필요 없이, TWENTY 하나로.</p></div>
+      <div class="model-toolbar"><div class="filters" role="group" aria-label="모델 유형 필터"><button class="filter active" data-filter="all" aria-pressed="true">전체 <span>8</span></button><button class="filter" data-filter="text" aria-pressed="false">텍스트·코드</button><button class="filter" data-filter="image" aria-pressed="false">이미지·미디어</button><button class="filter" data-filter="video" aria-pressed="false">영상</button></div><label class="model-search"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="model-search" type="search" placeholder="모델 검색" aria-label="모델 검색"></label></div>
+      <div id="model-grid" class="model-grid"></div><p id="model-empty" class="empty-state" hidden>검색 결과가 없습니다. 다른 모델명으로 검색해 보세요.</p><p id="model-count" class="sr-only" aria-live="polite"></p>
+      <div class="section-footnote"><span><span class="small-dot"></span> 지원 예정 모델 라인업 · 세부 버전과 단가는 출시 시 안내됩니다.</span><a href="#faq">할인 기준 알아보기 <span aria-hidden="true">↗</span></a></div>
+    </section>
+
+    <section id="savings" class="savings-section section" aria-labelledby="savings-title">
+      <div class="savings-copy"><span class="section-index mono">02 / DO THE MATH</span><h2 id="savings-title">비용의 차이가<br>가능성의 차이로<span class="period">.</span></h2><p>같은 모델, 같은 사용량.<br>달라지는 건 청구 금액뿐입니다.</p><div class="savings-note"><span class="big-asterisk" aria-hidden="true">✳</span><span>매달 아끼는 20%로<br><strong>다음 아이디어를 시작하세요.</strong></span></div></div>
+      <div class="calculator"><div class="calculator-header"><h3>우리 팀은 얼마나 절약할까요?</h3><span class="mono">−20%</span></div><div class="calculator-input"><label for="monthly-spend">현재 월 API 사용 금액</label><div class="amount-entry"><span>₩</span><input id="monthly-spend" inputmode="numeric" type="text" value="1,000,000" aria-describedby="amount-error"><span>원 / 월</span></div><p id="amount-error" class="field-error" role="alert" hidden>0원부터 1억 원까지 숫자로 입력해 주세요.</p><input id="spend-slider" type="range" min="0" max="10000000" step="100000" value="1000000" aria-label="월 API 사용 금액 조절"><div class="range-labels"><span>0원</span><span>1,000만 원</span></div><div class="quick-amounts"><button data-spend="100000">10만 원</button><button class="selected" data-spend="1000000">100만 원</button><button data-spend="5000000">500만 원</button><button data-spend="10000000">1,000만 원</button></div></div><div class="calculator-result" aria-live="polite" aria-atomic="true"><div class="cost-row"><span>TWENTY 이용 시</span><strong id="discounted-amount">800,000<span>원 / 월</span></strong></div><div class="saving-row"><span>매월 아끼는 금액 <span aria-hidden="true">↘</span></span><strong id="saved-amount">200,000<span>원</span></strong></div><p>1년이면 <strong id="annual-amount">2,400,000원</strong>을 아낄 수 있어요.</p></div><p class="calculator-disclaimer">20% 할인 가정에 따른 비교 예시입니다. 동일 모델·동일 사용량 기준이며, 실제 단가·부가세·환율 조건은 출시 시 안내됩니다.</p></div>
+    </section>
+
+    <section id="how-it-works" class="section how-section" aria-labelledby="how-title"><div class="section-topline"><span class="section-index mono">03 / LESS FRICTION</span><span class="tiny-label">복잡한 건 우리가, 만드는 건 당신이.</span></div><div class="section-heading"><h2 id="how-title">시작은 가볍게.<br>가능성은 무한하게<span class="period">.</span></h2><p>구독을 더하지 마세요.<br>필요할 때 충전하고, 원하는 만큼 사용하세요.</p></div><div class="steps"><article class="step"><span class="step-number mono">01</span><div class="step-visual credit-visual" aria-hidden="true"><span>₩</span><div>MY CREDITS<strong>₩ 100,000</strong><i>+ 충전하기</i></div></div><h3>필요한 만큼 충전하고</h3><p>예산에 맞춰 크레딧을 충전하세요.<br>여러 모델을 하나의 잔액으로 이용합니다.</p></article><article class="step"><span class="step-number mono">02</span><div class="step-visual key-visual" aria-hidden="true"><span>⌘</span><code>sk-twenty-••••••••</code><b>↗</b></div><h3>하나의 API로 연결하고</h3><p>흩어진 AI 연결을 간단하게.<br>통합 API에서 필요한 모델을 선택하세요.</p></article><article class="step"><span class="step-number mono">03</span><div class="step-visual use-visual" aria-hidden="true"><span>BUILD.</span><span>SHIP.</span><span>REPEAT. ↗</span></div><h3>쓰는 만큼만 차감하세요</h3><p>텍스트부터 영상까지 자유롭게.<br>할인된 요금으로 크레딧이 차감됩니다.</p></article></div></section>
+
+    <section id="developers" class="developer-section section" aria-labelledby="developer-title"><div class="developer-copy"><span class="section-index mono">04 / FOR THE BUILDERS</span><h2 id="developer-title">새로운 가능성.<br>익숙한 연결 방식<span>.</span></h2><p>익숙한 OpenAI SDK 형식으로.<br>연결은 간단하게, 모델 선택은 자유롭게.</p><button class="button button-yellow" data-open="guide">연동 가이드 보기 <span aria-hidden="true">↗</span></button><span class="developer-note">통합 API 연동 예시 · 실제 연결 정보는 출시 시 제공</span></div><div class="code-window"><div class="code-header"><div><span></span><span></span><span></span></div><span class="mono">hello_twenty.py</span><button id="copy-code" aria-label="API 예시 코드 복사">복사 <span aria-hidden="true">⧉</span></button></div><pre><code id="api-code"><span class="code-purple">from</span> openai <span class="code-purple">import</span> OpenAI
+
+client = OpenAI(
+    api_key=<span class="code-yellow">"YOUR_TWENTY_API_KEY"</span>,
+    base_url=<span class="code-yellow">"https://YOUR_API_HOST/v1"</span>
+)
+
+response = client.chat.completions.create(
+    model=<span class="code-yellow">"YOUR_MODEL_ID"</span>,
+    messages=[{
+        <span class="code-yellow">"role"</span>: <span class="code-yellow">"user"</span>,
+        <span class="code-yellow">"content"</span>: <span class="code-yellow">"더 적은 비용으로, 더 많은 가능성을."</span>
+    }]
+)</code></pre><div class="code-footer"><span class="small-dot"></span> ONE CONNECTION. MORE POSSIBILITIES.</div></div></section>
+
+    <section id="business" class="business-section section" aria-labelledby="business-title"><div><span class="section-index mono">05 / BUILT FOR YOUR TEAM</span><h2 id="business-title">혼자 만들어도.<br>함께 성장해도<span class="period">.</span></h2><p>첫 사이드 프로젝트부터 기업의 서비스까지.<br>팀에 맞는 AI 사용 계획을 함께 만듭니다.</p><button class="button button-dark" data-open="contact">기업 도입 문의 <span aria-hidden="true">↗</span></button></div><div class="business-list"><div><span class="business-number mono">01</span><div><h3>개인 개발자 & 크리에이터</h3><p>고정 구독 없이, 필요한 모델을 필요한 만큼.</p></div><span aria-hidden="true">↗</span></div><div><span class="business-number mono">02</span><div><h3>스타트업 & 프로덕트 팀</h3><p>같은 예산으로 더 많은 실험과 더 빠른 실행.</p></div><span aria-hidden="true">↗</span></div><div><span class="business-number mono">03</span><div><h3>기업 & 대규모 프로젝트</h3><p>사용 규모와 운영 환경에 맞는 도입 상담.</p></div><span aria-hidden="true">↗</span></div></div></section>
+
+    <section id="faq" class="faq-section section" aria-labelledby="faq-title"><div><span class="section-index mono">06 / GOOD QUESTIONS</span><h2 id="faq-title">궁금한 것들<span class="period">.</span></h2><p>시작하기 전에, 조금 더 자세히.</p></div><div class="faq-list"><details><summary>정말 같은 AI를 20% 더 저렴하게 쓰나요?<span aria-hidden="true">+</span></summary><p>TWENTY는 공급 계약을 통해 확보한 가격 경쟁력을 AI API 이용 요금에 반영하는 서비스입니다. 20% 할인은 동일 모델·동일 사용량의 공급사 공개 API 가격을 비교 기준으로 설계했습니다. 세부 버전별 단가, 부가세와 환율 적용 조건은 출시 시 요금표에서 확정 안내합니다.</p></details><details><summary>ChatGPT Plus나 Claude 구독도 할인되나요?<span aria-hidden="true">+</span></summary><p>이 페이지에서 안내하는 할인은 앱과 서비스에 연결해 쓰는 AI API 사용료에 적용됩니다. ChatGPT Plus, Claude Pro 같은 개별 서비스의 월 구독 상품과는 다릅니다.</p></details><details><summary>크레딧은 어떻게 사용하나요?<span aria-hidden="true">+</span></summary><p>선불로 충전한 잔액에서 선택한 모델의 API 사용량에 따라 비용이 차감되는 방식입니다. 모델별 차감 단위는 토큰, 이미지 수, 영상 길이 등에 따라 달라집니다. 현재 충전 화면에서는 실제 결제 없이 이용 방식을 미리 볼 수 있습니다.</p></details><details><summary>남은 크레딧의 유효기간과 환불 기준은요?<span aria-hidden="true">+</span></summary><p>크레딧 유효기간, 미사용 잔액 환불, 최소 충전액 등의 판매 정책은 출시 시 확정해 결제 전에 안내할 예정입니다. 현재 페이지에서는 결제나 실제 크레딧 발급이 이루어지지 않습니다.</p></details><details><summary>기업의 대량 사용도 상담할 수 있나요?<span aria-hidden="true">+</span></summary><p>이용 모델, 예상 월 사용량, 결제·증빙 필요사항을 정리해 기업 도입 문의서를 준비할 수 있습니다. 현재 문의 버튼은 문의서 작성과 다운로드를 지원하며, 상담 접수 채널은 서비스 출시 시 연결됩니다.</p></details></div></section>
+
+    <section class="closing"><div class="closing-top"><span class="mono">SAME AI. BETTER DEAL.</span><span aria-hidden="true">↗</span></div><h2>만드는 건 더 크게.<br>쓰는 돈은 <span>20%</span> 더 작게.</h2><button class="button button-dark" data-open="credit">지금, TWENTY로 시작하기 <span aria-hidden="true">↗</span></button><p>당신이 쓰는 AI, 무조건 20% 더 싸게 제공해드립니다.</p></section>
+  </main>
+  <footer><div class="footer-main"><a href="#" class="wordmark" aria-label="TWENTY 홈"><span class="brand-symbol" aria-hidden="true">t<span>↘</span></span>twenty<span class="brand-dot">AI</span></a><span>AI의 가능성을, 더 많은 사람에게.</span><a href="#models">모델 둘러보기</a><button class="text-button" data-open="contact">도입 문의 <span aria-hidden="true">↗</span></button><a href="#" class="back-top" aria-label="맨 위로">↑</a></div><div class="footer-bottom"><span>© 2026 TWENTY. ALL POSSIBILITIES RESERVED.</span><span>서비스 콘셉트 미리보기 · 실제 결제 및 API 호출 미지원</span><button class="text-button" data-open="policy">이용 안내</button></div></footer>
+
+  <dialog id="app-dialog" aria-labelledby="dialog-title"><div class="dialog-header"><span id="dialog-eyebrow" class="mono">TWENTY</span><button id="dialog-close" aria-label="닫기">×</button></div><div id="dialog-content"></div></dialog>
+  <div id="toast" class="toast" role="status"></div>
+  <svg class="svg-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><symbol id="icon-openai" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="2.1"><path d="M16 4c6-4 14 3 10 9 6 4 2 14-5 13-1 7-12 8-15 1-7 0-10-10-4-14C0 6 9 0 14 5z" transform="translate(3 1) scale(.83)"/><path d="m16 8 7 4v8l-7 4-7-4v-8zm0 0v8l7 4m-7-4-7 4m7-4 7-4m-7 4-7-4m7 4v8"/></g></symbol></defs></svg>
+</body>
+</html>
