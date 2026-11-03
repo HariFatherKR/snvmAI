@@ -9,7 +9,6 @@ const models = [
   { id: 'glm', name: 'GLM', provider: 'Z.ai', categories: ['text'], label: '텍스트 · 코드', logo: './images/models/glm.svg', description: '텍스트 작성과 코드 작업에 사용하는 Z.ai의 언어 모델입니다.' },
   { id: 'seedance', name: 'Seedance', provider: 'ByteDance', categories: ['video'], label: '영상 생성', logo: './images/models/seedance.svg', description: '텍스트나 이미지를 입력해 영상을 만드는 ByteDance의 모델입니다.' },
   { id: 'kling', name: 'Kling', provider: 'Kuaishou', categories: ['video'], label: '영상 생성', logo: './images/models/kling.svg', description: '영상 제작에 사용하는 Kuaishou의 모델입니다.' },
-  { id: 'wand', name: 'WAND', provider: 'Tencent', categories: ['image', 'video'], label: '이미지 · 미디어', logo: './images/models/wand.svg', description: '이미지·영상 생성과 미디어 처리에 사용하는 Tencent의 AI 제품입니다.' }
 ];
 
 const grid = document.querySelector('#model-grid');

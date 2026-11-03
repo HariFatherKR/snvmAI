@@ -15,7 +15,3 @@ kling.svg: https://github.com/lobehub/lobe-icons/blob/master/packages/static-svg
 seedance.svg: https://raw.githubusercontent.com/lobehub/lobe-icons/master/packages/static-svg/icons/bytedance-color.svg
 Provider mark verified on: https://seed.bytedance.com/en/seedance
 Seedance uses the ByteDance provider mark.
-
-wand.svg: https://raw.githubusercontent.com/lobehub/lobe-icons/master/packages/static-svg/icons/tencentcloud-color.svg
-Provider mark verified on: https://cloud.tencent.com/product/wand
-WAND uses the Tencent Cloud provider mark; no separate WAND logo is implied.

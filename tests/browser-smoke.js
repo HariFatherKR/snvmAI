@@ -14,14 +14,14 @@
   assert(document.fonts.check('800 20px Pretendard'), 'Korean font loaded');
   assert(document.documentElement.scrollWidth <= innerWidth, 'No horizontal page overflow');
   $('[data-filter="video"]').click();
-  assert(document.querySelectorAll('.model-card').length === 3, 'Video filter includes Seedance, Kling and WAND');
+  assert(document.querySelectorAll('.model-card').length === 2, 'Video filter includes Seedance and Kling');
   enter('#model-search', 'Kling');
   assert(document.querySelectorAll('.model-card').length === 1, 'Search combines with the active category');
   enter('#model-search', '<invalid>');
   assert(!$('#model-empty').hidden && $('#model-grid').hidden, 'Unknown query shows an empty state');
   enter('#model-search', '');
   $('[data-filter="all"]').click();
-  assert(document.querySelectorAll('.model-card').length === 8, 'All eight models restored');
+  assert(document.querySelectorAll('.model-card').length === 7, 'All seven models restored');
   $('[data-model="claude"]').click();
   assert($('#app-dialog').open && $('#dialog-title').textContent === 'Claude', 'Model details open');
   assert($('#dialog-content a[data-cta="waitlist"]'), 'Model details include the launch signup link');
