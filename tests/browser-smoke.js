@@ -1,3 +1,4 @@
+// Run after verified Google Form URLs have replaced the link sentinels; never submits the external form.
 // Run against the local page: agent-browser --session snvm-qa eval --stdin < tests/browser-smoke.js
 (async () => {
   const checks = [];
@@ -23,6 +24,7 @@
   assert(document.querySelectorAll('.model-card').length === 8, 'All eight models restored');
   $('[data-model="claude"]').click();
   assert($('#app-dialog').open && $('#dialog-title').textContent === 'Claude', 'Model details open');
+  assert($('#dialog-content a[data-cta="waitlist"]'), 'Model details include the launch signup link');
   await close();
 
   enter('#monthly-spend', '5000000');
@@ -34,40 +36,27 @@
   $('[data-spend="1000000"]').click();
   assert($('#amount-error').hidden && $('#annual-amount').textContent === '2,400,000원', 'Preset restores valid amounts');
 
-  $('.header [data-open="credit"]').click();
-  enter('#credit-amount', '10001');
-  assert(!$('#credit-error').hidden && !$('#credit-form').checkValidity(), 'Credit precision is validated');
-  $('[data-credit="50000"]').click();
-  $('#credit-form').requestSubmit();
-  assert($('#dialog-title').textContent.includes('체험했어요'), 'Credit preview completes');
-  $('#dialog-content [data-open="console"]').click();
-  assert($('.console-balance strong').textContent === '₩ 50,000', 'Preview console reflects the credit balance');
-  await close();
+  const conversionLinks = [...document.querySelectorAll('a[data-cta]')];
+  assert(conversionLinks.length >= 7, 'Header, hero, mobile, business, closing and footer CTAs are present');
+  assert(conversionLinks.every(link => link.target === '_blank' && link.relList.contains('noopener') && link.relList.contains('noreferrer')), 'Conversion links open safely in a new tab');
+  assert(conversionLinks.every(link => {
+    const url = new URL(link.href);
+    return url.protocol === 'https:' && url.hostname === 'docs.google.com' && url.pathname.startsWith('/forms/');
+  }), 'Every conversion link points to a published Google Form');
+  assert(!document.querySelector('[data-open="credit"],[data-open="console"],[data-open="contact"]'), 'Demo and download conversion flows are removed');
+  assert($('.launch-note').textContent === '서비스 출시하면 메일을 드립니다.', 'Launch email promise is visible beside the primary CTA');
 
   $('[data-open="guide"]').click();
   $('#show-code').click();
   await tick();
   assert(document.activeElement === $('#copy-code'), 'Guide returns focus to the code copy action');
 
-  $('#business [data-open="contact"]').click();
-  enter('#company-name', '   ');
-  enter('#contact-email', 'qa@example.com');
-  enter('#contact-message', '   ');
-  $('#contact-form').requestSubmit();
-  assert(!$('#company-name').validity.valid, 'Whitespace-only contact information is rejected');
-  enter('#company-name', 'SNVM AI QA');
-  enter('#contact-message', '테스트용 로컬 문의서입니다.');
-  $('#contact-form').requestSubmit();
-  assert($('#dialog-content [role="status"]').textContent.includes('다운로드'), 'Download feedback remains inside the modal');
-  await close();
-
   if (innerWidth <= 640) {
     $('.menu-toggle').click();
     assert(!$('#mobile-nav').hidden, 'Mobile navigation opens');
-    $('#mobile-nav [data-open="console"]').click();
-    assert($('#mobile-nav').hidden && $('#app-dialog').open, 'Mobile console opens and navigation closes');
-    await close();
-    assert(document.activeElement === $('.menu-toggle'), 'Mobile modal restores focus to visible menu control');
+    assert($('#mobile-nav a[data-cta="contact"]').textContent === '문의하기', 'Mobile navigation includes the inquiry link');
+    $('.menu-toggle').click();
+    assert($('#mobile-nav').hidden, 'Mobile navigation closes');
   }
   const faq = $('.faq-list details');
   faq.querySelector('summary').click();

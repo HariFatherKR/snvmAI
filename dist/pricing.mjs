@@ -5,7 +5,3 @@ export function calculateSavings(amount) {
   const saved = Math.round(amount * 0.2);
   return { original: amount, discounted: amount - saved, saved, annual: saved * 12 };
 }
-
-export function validCreditAmount(amount) {
-  return Number.isSafeInteger(amount) && amount >= 10_000 && amount <= 10_000_000 && amount % 1_000 === 0;
-}
