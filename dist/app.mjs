@@ -85,14 +85,24 @@ mobileNav.addEventListener('click', event => { if (event.target.closest('a,butto
 document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });
 const motionButton = document.querySelector('.motion-toggle');
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+// 제목은 JS와 Observer가 준비된 경우에만 숨겨서 등장시킵니다.
+const kineticObserver = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
+  for (const entry of entries) {
+    if (!entry.isIntersecting) continue;
+    entry.target.classList.add('kinetic-visible');
+    kineticObserver.unobserve(entry.target);
+  }
+}, { threshold: 0.15 }) : null;
+document.querySelectorAll('[data-kinetic]').forEach(element => kineticObserver?.observe(element));
 function syncMotionButton() {
+  const paused = document.documentElement.classList.contains('motion-paused');
+  document.documentElement.classList.toggle('kinetic-enabled', Boolean(kineticObserver) && !reducedMotion.matches && !paused);
   if (reducedMotion.matches) {
     motionButton.textContent = '모션 줄이기 설정 적용 중';
     motionButton.disabled = true;
     motionButton.setAttribute('aria-label', '기기의 모션 줄이기 설정 적용 중');
   } else {
     motionButton.disabled = false;
-    const paused = document.documentElement.classList.contains('motion-paused');
     motionButton.innerHTML = paused ? '<span aria-hidden="true">▷</span> 모션 재생' : '<span aria-hidden="true">Ⅱ</span> 모션 정지';
     motionButton.setAttribute('aria-pressed', String(paused));
     motionButton.setAttribute('aria-label', paused ? '애니메이션 재생' : '애니메이션 일시정지');

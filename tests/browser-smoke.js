@@ -65,6 +65,14 @@
   if (!$('.motion-toggle').disabled) {
     $('.motion-toggle').click();
     assert(document.documentElement.classList.contains('motion-paused'), 'Motion can be paused');
+    assert(!document.documentElement.classList.contains('kinetic-enabled'), 'Scroll entrances stop when motion is paused');
+    assert([...document.querySelectorAll('.kinetic-text')].every(text => {
+      const style = getComputedStyle(text);
+      return style.opacity === '1' && style.transform === 'none';
+    }), 'Paused headings remain fully readable, including offscreen headings');
+    assert(getComputedStyle($('.rate-roll')).transform === 'none', 'Paused discount shows a complete static number');
+    $('.motion-toggle').click();
+    assert(document.documentElement.classList.contains('kinetic-enabled'), 'Motion resumes after the second toggle');
   }
   assert(document.documentElement.scrollWidth <= innerWidth, 'No overflow after interactions');
   window.scrollTo({ top: 0, behavior: 'instant' });
