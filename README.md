@@ -13,7 +13,20 @@ npm test
 
 ## 이미지·영상 API 테스트
 
-Node.js 22.16 이상에서 `npm run lab -- image` 또는 `npm run lab -- video`로 요청을 미리 확인합니다. API 호출은 `.env.local`에 TokenHub 키를 설정하고 `--execute`를 붙일 때만 실행합니다. WAND 이미지 Lite·영상 Lite의 생성, 작업 조회 재개, JSON 기록과 HTML 미리보기를 지원합니다. 설치할 패키지는 없습니다.
+Node.js 22.16 이상에서 공급자를 선택해 테스트합니다. 설치할 패키지는 없습니다.
+
+```sh
+npm run lab -- list
+npm run lab -- list --provider tokenhub
+npm run lab -- image --provider tokenhub
+npm run lab -- video --provider tokenhub
+```
+
+TokenHub(팀 1)는 TokenHub에서 제공하는 WAND 이미지 Lite·영상 Lite의 생성, 작업 조회 재개, JSON 기록과 HTML 미리보기를 지원합니다. 기본은 API를 호출하지 않는 dry-run이며, `.env.local`의 `TOKENHUB_API_KEY`를 설정하고 `--execute`를 붙이면 실제 요청을 보냅니다. `--provider`를 생략하면 `tokenhub`를 사용합니다.
+
+WAND(팀 5)는 별도 전용 API의 주소·인증·요청 규격을 기다리는 상태입니다. `WAND_BASE_URL`은 빈 설정 항목이며 인증 방식은 아직 가정하지 않았습니다. `--provider wand`로 생성·조회하려 하면 네트워크 요청 없이 종료하며 TokenHub나 VOD/MPS로 우회하지 않습니다. 실제 생성 API는 아직 호출하지 않았습니다.
+
+보고서는 `artifacts/media-lab/<provider>/<실행 ID>/`에 저장하며 `report.json`의 `provider`로 공급자를 구분합니다.
 
 실행 방법과 모델별 연결 범위는 [테스트 환경 안내](docs/media-lab.md)를 참고하세요. 로컬 테스트 도구와 인증정보는 공개 홈페이지에 배포하지 않습니다.
 

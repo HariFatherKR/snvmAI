@@ -11,9 +11,18 @@ const reply = (body, status = 200) => new Response(JSON.stringify(body), { statu
 test('dry run builds the image request without credentials or any network call', async () => {
   const report = await runGeneration({ kind: 'image', prompt: '제품 사진', fetchImpl: () => assert.fail('network called') });
   assert.equal(report.status, 'dry-run');
+  assert.equal(report.provider, 'tokenhub');
   assert.equal(report.request.url, 'https://tokenhub-intl.tencentcloudmaas.com/v1/wand/vega-images/generations');
   assert.deepEqual(report.request.body, { model: 'wand-vega-image-lite', prompt: '제품 사진', size: '1024x1024' });
   assert.equal(report.cost, null);
+});
+
+test('independent WAND and unknown providers never fall back to the TokenHub API', async () => {
+  for (const provider of ['wand', 'unknown']) {
+    await assert.rejects(runGeneration({ provider, kind: 'image', prompt: 'test', execute: true, key,
+      fetchImpl: () => assert.fail('provider must not make a request')
+    }), provider === 'wand' ? /WAND.*전용 API/ : /공급자/);
+  }
 });
 
 test('image submit saves task ID before polling and reads completed image URLs and usage', async () => {
