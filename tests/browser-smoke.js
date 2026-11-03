@@ -1,4 +1,4 @@
-// Run against the local page: agent-browser --session twenty-qa eval --stdin < tests/browser-smoke.js
+// Run against the local page: agent-browser --session snvm-qa eval --stdin < tests/browser-smoke.js
 (async () => {
   const checks = [];
   const $ = selector => document.querySelector(selector);
@@ -55,7 +55,7 @@
   enter('#contact-message', '   ');
   $('#contact-form').requestSubmit();
   assert(!$('#company-name').validity.valid, 'Whitespace-only contact information is rejected');
-  enter('#company-name', 'TWENTY QA');
+  enter('#company-name', 'SNVM AI QA');
   enter('#contact-message', '테스트용 로컬 문의서입니다.');
   $('#contact-form').requestSubmit();
   assert($('#dialog-content [role="status"]').textContent.includes('다운로드'), 'Download feedback remains inside the modal');
