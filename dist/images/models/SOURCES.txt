@@ -1,0 +1,21 @@
+Brand image sources
+Retrieved: 2026-11-03
+
+SVG assets below are from Lobe Icons, licensed under MIT (LICENSE-lobe-icons.txt).
+Brand trademarks remain the property of their respective owners.
+GLM uses the provider Z.ai mark.
+
+claude.svg: https://github.com/lobehub/lobe-icons/blob/master/packages/static-svg/icons/claude-color.svg
+openai.svg: https://github.com/lobehub/lobe-icons/blob/master/packages/static-svg/icons/openai.svg
+gemini.svg: https://github.com/lobehub/lobe-icons/blob/master/packages/static-svg/icons/gemini-color.svg
+deepseek.svg: https://github.com/lobehub/lobe-icons/blob/master/packages/static-svg/icons/deepseek-color.svg
+glm.svg: https://github.com/lobehub/lobe-icons/blob/master/packages/static-svg/icons/zai.svg
+kling.svg: https://github.com/lobehub/lobe-icons/blob/master/packages/static-svg/icons/kling-color.svg
+
+seedance.svg: https://raw.githubusercontent.com/lobehub/lobe-icons/master/packages/static-svg/icons/bytedance-color.svg
+Provider mark verified on: https://seed.bytedance.com/en/seedance
+Seedance uses the ByteDance provider mark.
+
+wand.svg: https://raw.githubusercontent.com/lobehub/lobe-icons/master/packages/static-svg/icons/tencentcloud-color.svg
+Provider mark verified on: https://cloud.tencent.com/product/wand
+WAND uses the Tencent Cloud provider mark; no separate WAND logo is implied.

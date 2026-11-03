@@ -2,14 +2,14 @@ import { calculateSavings } from './pricing.mjs';
 
 const won = new Intl.NumberFormat('ko-KR');
 const models = [
-  { id: 'claude', name: 'Claude', provider: 'Anthropic', categories: ['text'], label: '텍스트 · 코드', logo: '✳', description: '문서 작성과 코드 작업에 사용하는 Anthropic의 언어 모델입니다.' },
-  { id: 'openai', name: 'ChatGPT', provider: 'OpenAI 모델 API', categories: ['text'], label: '텍스트 · 코드', logo: '<svg aria-hidden="true"><use href="#icon-openai"/></svg>', description: '대화, 문서 작성, 코딩에 사용하는 OpenAI 모델 API입니다. ChatGPT Plus 구독과 별도로 이용합니다.' },
-  { id: 'gemini', name: 'Gemini', provider: 'Google', categories: ['text'], label: '텍스트 · 멀티모달', logo: '✦', description: '텍스트와 여러 형식의 자료를 함께 분석하는 Google의 모델입니다.' },
-  { id: 'deepseek', name: 'DeepSeek', provider: 'DeepSeek', categories: ['text'], label: '추론 · 코드', logo: '<svg aria-hidden="true" viewBox="0 0 40 40"><path fill="currentColor" d="M5 21c-2-3-2-7 0-10 1 5 3 7 5 7 3-7 14-9 20-2l7-3-1 6 4 2-6 3c-5 10-18 11-25 4L3 32l1-7-4-3z"/><circle cx="27" cy="19" r="1.5" fill="#fbfaf5"/></svg>', description: '추론과 코드 작성에 사용하는 DeepSeek의 언어 모델입니다.' },
-  { id: 'glm', name: 'GLM', provider: 'Z.ai', categories: ['text'], label: '텍스트 · 코드', logo: '≋', description: '텍스트 작성과 코드 작업에 사용하는 Z.ai의 언어 모델입니다.' },
-  { id: 'seedance', name: 'Seedance', provider: 'ByteDance', categories: ['video'], label: '영상 생성', logo: '◈', description: '텍스트나 이미지를 입력해 영상을 만드는 ByteDance의 모델입니다.' },
-  { id: 'kling', name: 'Kling', provider: 'Kuaishou', categories: ['video'], label: '영상 생성', logo: 'K', description: '영상 제작에 사용하는 Kuaishou의 모델입니다.' },
-  { id: 'wand', name: 'WAND', provider: 'Tencent', categories: ['image', 'video'], label: '이미지 · 미디어', logo: 'W', description: '이미지·영상 생성과 미디어 처리에 사용하는 Tencent의 AI 제품입니다.' }
+  { id: 'claude', name: 'Claude', provider: 'Anthropic', categories: ['text'], label: '텍스트 · 코드', logo: './images/models/claude.svg', description: '문서 작성과 코드 작업에 사용하는 Anthropic의 언어 모델입니다.' },
+  { id: 'openai', name: 'ChatGPT', provider: 'OpenAI 모델 API', categories: ['text'], label: '텍스트 · 코드', logo: './images/models/openai.svg', description: '대화, 문서 작성, 코딩에 사용하는 OpenAI 모델 API입니다. ChatGPT Plus 구독과 별도로 이용합니다.' },
+  { id: 'gemini', name: 'Gemini', provider: 'Google', categories: ['text'], label: '텍스트 · 멀티모달', logo: './images/models/gemini.svg', description: '텍스트와 여러 형식의 자료를 함께 분석하는 Google의 모델입니다.' },
+  { id: 'deepseek', name: 'DeepSeek', provider: 'DeepSeek', categories: ['text'], label: '추론 · 코드', logo: './images/models/deepseek.svg', description: '추론과 코드 작성에 사용하는 DeepSeek의 언어 모델입니다.' },
+  { id: 'glm', name: 'GLM', provider: 'Z.ai', categories: ['text'], label: '텍스트 · 코드', logo: './images/models/glm.svg', description: '텍스트 작성과 코드 작업에 사용하는 Z.ai의 언어 모델입니다.' },
+  { id: 'seedance', name: 'Seedance', provider: 'ByteDance', categories: ['video'], label: '영상 생성', logo: './images/models/seedance.svg', description: '텍스트나 이미지를 입력해 영상을 만드는 ByteDance의 모델입니다.' },
+  { id: 'kling', name: 'Kling', provider: 'Kuaishou', categories: ['video'], label: '영상 생성', logo: './images/models/kling.svg', description: '영상 제작에 사용하는 Kuaishou의 모델입니다.' },
+  { id: 'wand', name: 'WAND', provider: 'Tencent', categories: ['image', 'video'], label: '이미지 · 미디어', logo: './images/models/wand.svg', description: '이미지·영상 생성과 미디어 처리에 사용하는 Tencent의 AI 제품입니다.' }
 ];
 
 const grid = document.querySelector('#model-grid');
@@ -19,7 +19,7 @@ let category = 'all';
 function renderModels() {
   const query = search.value.trim().toLocaleLowerCase();
   const filtered = models.filter(model => (category === 'all' || model.categories.includes(category)) && `${model.name} ${model.provider} ${model.label}`.toLocaleLowerCase().includes(query));
-  grid.innerHTML = filtered.map(model => `<button class="model-card" data-model="${model.id}" aria-label="${model.name}, 20% 할인, 모델 자세히 보기"><div class="model-card-top"><span class="model-logo logo-${model.id}" aria-hidden="true">${model.logo}</span><span class="discount-badge">20% 할인</span></div><h3>${model.name}</h3><p>${model.provider}</p><div class="model-card-bottom"><span class="category-tag">${model.label}</span><span class="model-card-arrow" aria-hidden="true">↗</span></div></button>`).join('');
+  grid.innerHTML = filtered.map(model => `<button class="model-card" data-model="${model.id}" aria-label="${model.name}, 20% 할인, 모델 자세히 보기"><div class="model-card-top"><span class="model-logo logo-${model.id}" aria-hidden="true"><img src="${model.logo}" width="40" height="40" alt="" loading="lazy" decoding="async"></span><span class="discount-badge">20% 할인</span></div><h3>${model.name}</h3><p>${model.provider}</p><div class="model-card-bottom"><span class="category-tag">${model.label}</span><span class="model-card-arrow" aria-hidden="true">↗</span></div></button>`).join('');
   grid.hidden = filtered.length === 0;
   document.querySelector('#model-empty').hidden = filtered.length > 0;
   document.querySelector('#model-count').textContent = `${filtered.length}개의 모델이 표시됩니다.`;
@@ -169,7 +169,7 @@ function guideDialog() {
 function modelDialog(id) {
   const model = models.find(item => item.id === id);
   if (!model) return;
-  showDialog('모델 안내', `<span class="preview-label">지원 예정 모델</span> <span class="discount-badge">20% 할인</span><div class="model-dialog-logo model-logo logo-${model.id}" aria-hidden="true">${model.logo}</div><h2 class="dialog-title" id="dialog-title">${model.name}</h2><p class="dialog-subtitle">${model.description}</p><div class="model-dialog-facts"><div>제공사<strong>${model.provider}</strong></div><div>활용 분야<strong>${model.label}</strong></div></div><p class="dialog-subtitle">현재 표시한 20% 할인율은 임시 안내입니다. 동일 모델의 공개 API 가격을 기준으로 비교하며, 확정 할인율과 지원 버전, 단가는 출시 시 안내합니다.</p><a class="button button-yellow dialog-full-button" data-cta="waitlist" href="https://docs.google.com/forms/d/e/1FAIpQLSdNcSwuzh3LBHjDPUgoXGbFQqcpUNlqjviSa2slf0LgYf_6_g/viewform?entry.1408000558=%EC%B6%9C%EC%8B%9C%20%EC%95%8C%EB%A6%BC%20%EC%8B%A0%EC%B2%AD" target="_blank" rel="noopener noreferrer">출시 알림 신청 <span aria-hidden="true">↗</span></a><p class="dialog-note">서비스 출시하면 메일을 드립니다.</p>`);
+  showDialog('모델 안내', `<span class="preview-label">지원 예정 모델</span> <span class="discount-badge">20% 할인</span><div class="model-dialog-logo model-logo logo-${model.id}" aria-hidden="true"><img src="${model.logo}" width="40" height="40" alt="" decoding="async"></div><h2 class="dialog-title" id="dialog-title">${model.name}</h2><p class="dialog-subtitle">${model.description}</p><div class="model-dialog-facts"><div>제공사<strong>${model.provider}</strong></div><div>활용 분야<strong>${model.label}</strong></div></div><p class="dialog-subtitle">현재 표시한 20% 할인율은 임시 안내입니다. 동일 모델의 공개 API 가격을 기준으로 비교하며, 확정 할인율과 지원 버전, 단가는 출시 시 안내합니다.</p><a class="button button-yellow dialog-full-button" data-cta="waitlist" href="https://docs.google.com/forms/d/e/1FAIpQLSdNcSwuzh3LBHjDPUgoXGbFQqcpUNlqjviSa2slf0LgYf_6_g/viewform?entry.1408000558=%EC%B6%9C%EC%8B%9C%20%EC%95%8C%EB%A6%BC%20%EC%8B%A0%EC%B2%AD" target="_blank" rel="noopener noreferrer">출시 알림 신청 <span aria-hidden="true">↗</span></a><p class="dialog-note">서비스 출시하면 메일을 드립니다.</p>`);
 }
 
 function policyDialog() {
