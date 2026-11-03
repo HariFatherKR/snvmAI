@@ -21,7 +21,16 @@
   assert(!$('#model-empty').hidden && $('#model-grid').hidden, 'Unknown query shows an empty state');
   enter('#model-search', '');
   $('[data-filter="all"]').click();
-  assert(document.querySelectorAll('.model-card').length === 7, 'All seven models restored');
+  assert(document.querySelectorAll('.model-card').length === 8, 'All eight models restored');
+  $('[data-filter="audio"]').click();
+  assert(document.querySelectorAll('.model-card').length === 1 && $('[data-model="minimax-speech"]'), 'Audio filter includes MiniMax Speech');
+  enter('#model-search', 'TTS');
+  assert(document.querySelectorAll('.model-card').length === 1, 'TTS search finds the speech model');
+  $('[data-model="minimax-speech"]').click();
+  assert($('#app-dialog').open && $('#dialog-title').textContent === 'MiniMax Speech', 'Speech model details open');
+  await close();
+  enter('#model-search', '');
+  $('[data-filter="all"]').click();
   $('[data-model="claude"]').click();
   assert($('#app-dialog').open && $('#dialog-title').textContent === 'Claude', 'Model details open');
   assert($('#dialog-content a[data-cta="waitlist"]'), 'Model details include the launch signup link');
