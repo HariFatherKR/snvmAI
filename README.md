@@ -11,6 +11,12 @@ npm test
 
 로컬 주소: http://127.0.0.1:4317
 
+## 이미지·영상 API 테스트
+
+Node.js 22.16 이상에서 `npm run lab -- image` 또는 `npm run lab -- video`로 요청을 미리 확인합니다. API 호출은 `.env.local`에 TokenHub 키를 설정하고 `--execute`를 붙일 때만 실행합니다. WAND 이미지 Lite·영상 Lite의 생성, 작업 조회 재개, JSON 기록과 HTML 미리보기를 지원합니다. 설치할 패키지는 없습니다.
+
+실행 방법과 모델별 연결 범위는 [테스트 환경 안내](docs/media-lab.md)를 참고하세요. 로컬 테스트 도구와 인증정보는 공개 홈페이지에 배포하지 않습니다.
+
 ## Vercel 배포
 
 `vercel.json`에서 빌드·의존성 설치 없이 `dist/`를 배포하도록 설정합니다. GitHub 저장소는 Vercel의 `snvm-ai` 프로젝트에 연결되어 있습니다.

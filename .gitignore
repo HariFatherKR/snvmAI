@@ -3,3 +3,5 @@ node_modules/
 artifacts/
 *.tar.gz
 .vercel
+.env*
+!.env.example

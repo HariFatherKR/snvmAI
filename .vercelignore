@@ -2,3 +2,7 @@ artifacts/
 .openai/
 tests/
 *.tar.gz
+.env*
+tools/
+lib/
+docs/
